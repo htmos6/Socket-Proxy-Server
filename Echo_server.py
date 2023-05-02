@@ -1,10 +1,11 @@
 # Echo server program
 import socket
 import time
+import re
 
 #Loopback IP address
 HOST = '127.0.0.1'
-PORT = 6001
+PORT = 6002
 #Create a sockets
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print ("Socket successfully created")
@@ -18,6 +19,9 @@ print("Listening for connections")
 conn, clientAddress = server_socket.accept()
 print ('Connected ', clientAddress)
 
+
+SERVER_DATA = [None] * 10
+
 while 1:
     try:
         dataReceived = conn.recv(1024)
@@ -29,13 +33,43 @@ while 1:
         time.sleep(0.5)
 
     else:    
-        print("Initial Data is:")
+        #print("Initial Data is:")
         #Initial data should be a byte object with utf-8 encoding
-        print(dataReceived)
+        #print(dataReceived)
         #Decode the data into a string
         dataReceived = dataReceived.decode('utf-8')
-        print("Decoded Data is:")
-        print(dataReceived)
+        #print(type(dataReceived))
+        dataReceived = re.split(":", dataReceived)
+        opcode = dataReceived[0]
+
+        if (opcode == "GET"):
+            indice = int(dataReceived[1])
+            dataReceived = int(SERVER_DATA[indice])
+            print("Decoded OP: GET--> ID: ", indice, " DATA: ", dataReceived)
+        
+        elif (opcode == "PUT"):
+            indice = int(dataReceived[1])
+            data = int(dataReceived[2])
+            SERVER_DATA[indice] = data
+            dataReceived = SERVER_DATA[indice]
+            print("Decoded OP: PUT--> ID: ", indice, " DATA: ", dataReceived)
+
+        elif (opcode == "CLR"):
+            SERVER_DATA = [None] * 10
+            dataReceived = "-"
+            print("Decoded OP: CLR-->", " DATA: ", dataReceived)
+
+        elif (opcode == "ADD"):
+            indice = int(dataReceived[1])
+            dataReceived = int(SERVER_DATA[indice])
+            print("Decoded OP: GET--> ID: ", indice, " DATA: ", dataReceived)
+
+
+        print("Remote Server Data by Order:", end=" ")
+        for i in SERVER_DATA:
+            print(i, end=" ")
+        print("\n")
+        
         #Encode and send the data back to the client
-        conn.sendall(bytes(dataReceived,'utf-8'))
+        conn.sendall(bytes(str(dataReceived),'utf-8'))
 
