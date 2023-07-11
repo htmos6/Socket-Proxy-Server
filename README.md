@@ -66,6 +66,12 @@ the ”DATA” field.
 
 ![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/8c44bb44-bb74-4570-a958-bd31bdb1ed4f)
 
+### 3- Test Results
+* For the first case, I have filled the remote server data buffer with put command. You can see the cache content at the “Proxy_process.py File Terminal”.  
+Client_process.py File Terminal  
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/00f9c17e-aa50-4880-b313-71197920e432)
+
 
 
 
