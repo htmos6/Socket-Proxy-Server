@@ -68,9 +68,113 @@ the ”DATA” field.
 
 ### 3- Test Results
 * For the first case, I have filled the remote server data buffer with put command. You can see the cache content at the “Proxy_process.py File Terminal”.  
-Client_process.py File Terminal  
+
+* Client_process.py File Terminal  
 
 ![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/00f9c17e-aa50-4880-b313-71197920e432)
+
+* Proxy_process.py File Terminal
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/c6f4e55c-2e6c-48dd-b2f1-018b40602d17)
+
+* Server_process.m File Terminal   
+I have filled buffer indexes from 0 to 4 with values 0 to 4.
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/2bc5c0a6-f9ea-4aa8-8604-695e41de6881)
+
+* Then, I have filled remaining buffer indexes from 5 to 9 with values 5 to 9. As you can see, cache
+content will bu updated. According to most used data is put to the top of the cache.  
+
+* Client_process.py
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/255c09e9-b2e2-4a67-a8f8-3b280a71c90f)
+
+* Proxy_process.py File Terminal
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/1671d08d-6d92-4e44-83c6-dcc7cca9c308)
+
+* Here is the remote server. It also updated. Such that new added datas will be added to here.,
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/f1dad75f-3c68-43e5-8db1-d155ce774af6)
+
+* Now, I will only change index 0 data with a value 12. I will check that will it work or not.
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/90b29f53-083b-498d-bc39-16bd86d15163)
+
+* Since I added 12 to the index0, cache will put it to the upper most index because it was the most
+recently accessed element. Also, I changed index 1 content with a number 45. Top element of the
+cache is a 12 as first. After addition of 45, 45 becomes a top element of the cache.
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/bc51c15b-676c-4b7b-94c3-382ead26e72a)
+
+* Here, remote server content. It is updated as I put new datas to server.  
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/7429a04a-1c48-476e-8d88-80b64ec4fb02)
+
+* I added datas at the index 0,1,2. Since they exist at the cache, they will not connect to server. Values
+will be directly taken from cache memory since data exist in the cache
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/a91ffd2f-338a-4f1b-824f-8d10aac58514)
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/9580f0d8-a82e-4429-b2cb-56799ba253dd)
+
+* By using get method, obtain values from corresponding indexes. Index 1 value exist in the cache.
+Hence, only index 3 and 5 will taken from server. Index 1 taken from cache.
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/a419b001-ded9-490e-b4af-3197a7d92157)
+
+
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/e70a399a-42f5-457d-8d21-1ccecdeac52b)
+
+
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/b15a01c2-9cdf-4cc9-b0fd-3f992a599a30)
+
+
+
+* Clear Operation
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/f7f05929-698d-4a8f-baca-2a3537347034)
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/0a7e54ab-ba61-449d-bfbb-70c4c8996b50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![image](https://github.com/htmos6/Socket-Proxy-Server/assets/88316097/56c46d78-e687-47d4-ae11-28e9d611d6ae)
+
+
+
+
+
+
+
 
 
 
